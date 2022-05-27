@@ -1,0 +1,99 @@
+.map-container {
+    height: 600px;
+    border-radius: 20px;
+    width: 1100px;
+    
+}
+
+.GestionCartesScreen {
+    
+    padding: 5px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.sidebar {
+    background-color:#b2a995;
+    color: #fff;
+    padding: 6px 12px;
+    font-family: monospace;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    margin: 12px;
+    border-radius: 20px;
+    }
+
+.header {
+    font-weight: 400;
+    font-size: 24px;
+    padding-top: 30px;
+}
+
+.InputList {
+    padding: 20px;
+    display: flex;
+    margin-top: 20px;
+}
+.InputBar {
+    font-size: 22px;
+
+    padding: 10px;
+    
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    color: black;
+
+    width: 206px;
+    max-height: 66px;
+
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.InputButton {
+    font-size: 17px;
+    font-weight: 400;
+
+    padding: 10px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    
+    background-color: #E17E01;
+    border-radius: 10px;
+    color: white;
+    border: 0;
+    width: 206px;
+    max-height: 66px;
+
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.InputButton:hover {
+    cursor: pointer;
+}
+
+.InputBar input {
+    color: #28333B;
+    background-color: #F9F9F9;
+    outline: none;
+    margin: auto;
+    width: 80%;
+    height: 100%;
+    border: 0;
+    
+}
+
+.InputBar input textarea {
+    color: #28333B;
+    font-size: 17px;
+    font-weight: 400;
+}
+  

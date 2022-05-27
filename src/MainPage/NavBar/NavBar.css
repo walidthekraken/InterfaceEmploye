@@ -1,0 +1,47 @@
+.NavBar {
+    float: inline-start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: white;
+}
+
+.SearchBar {
+    font-size: 22px;
+    padding: 15px;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    background-color: #F9F9F9;
+    border-radius: 15px;
+    color: black;
+
+    width: 458px;
+    max-height: 50px;
+
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.SearchBar input {
+    color: #28333B;
+    background-color: #F9F9F9;
+    outline: none;
+    margin: auto;
+    width: 80%;
+    height: 100%;
+    border: 0;
+    
+}
+
+.SearchBar input textarea {
+    color: #28333B;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.NavBar img {
+    max-width: 25px;
+}

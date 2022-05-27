@@ -1,0 +1,81 @@
+.List {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 391px;
+    padding-left: 20px;
+    
+}
+
+.List button {
+    min-width: 200px;
+    text-align: left;
+    padding: 10px;
+    padding-left: 30px;
+}
+
+.off-button {
+    margin: 5px;
+    background-color: white;
+    border: 3dp;
+    border-color: white;
+    
+    border-radius: 10px;
+    border-style: solid;  
+}
+
+.selected-button {
+    margin: 6px;
+    border: 3dp;
+    background-color: white;
+    border-color: #E17E01;
+    border-radius: 10px;
+    border-style: solid;
+    color: #E17E01;
+}
+
+.List button:hover {
+    color: #E17E01;
+    cursor: pointer;
+}
+
+.ListBot {
+    float:right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.SidePanel {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 390px;
+}
+
+#outer-container {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+#sidebar {
+	display: table-cell;
+	width: 20%;
+	vertical-align: top;
+    background-color: white;
+}
+
+#content {
+    padding: 10px;
+	display: table-cell;
+	width: 80%;
+	vertical-align: top;
+    background-color: #28333B;
+}
+
+body {
+    background-color: #28333B;
+}
