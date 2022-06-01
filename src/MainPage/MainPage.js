@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import GestionCartes from "../Screens/GestionCartes/GestionCartes";
+import GestionPoints from "../Screens/GestionDesPoints/GestionPoints";
 import './MainPage.css'
 import NavBar from "./NavBar/NavBar";
 
@@ -21,6 +22,7 @@ const clickHandler = (id) => {
                     <div className="List">
                         <button className={(pageId===0)?"selected-button":"off-button"} onClick={()=>{clickHandler(0)}}>Home</button>
                         <button className={(pageId===1)?"selected-button":"off-button"} onClick={()=>{clickHandler(1)}}>Gestion des cartes</button>
+                        <button className={(pageId===6)?"selected-button":"off-button"} onClick={()=>{clickHandler(6)}}>Gestion des points d'interet</button>
                         <button className={(pageId===2)?"selected-button":"off-button"} onClick={()=>{clickHandler(2)}}>Gestion des avis</button>
                         <button className={(pageId===3)?"selected-button":"off-button"} onClick={()=>{clickHandler(3)}}>Gestion des événements</button>
                         <button className={(pageId===4)?"selected-button":"off-button"} onClick={()=>{clickHandler(4)}}>Gestion des circuits</button>
@@ -33,6 +35,9 @@ const clickHandler = (id) => {
                     }
                     {
                         (pageId===1) && <GestionCartes/>
+                    }
+                    {
+                        (pageId===6) && <GestionPoints/>
                     }
                     {
                         (pageId===2) && <p>hhhhh</p>
