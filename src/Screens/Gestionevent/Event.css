@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); 
+
+.react-calendar.GestionEventScreen {
+    
+    padding: 5px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.react-calendar { 
+    width: 90px;
+    width: 300px;
+    background-color: white;
+    color: #222;
+    border:none;
+    font-family: "Poppins";
+    line-height: 1.5em;
+    margin-left: auto;;
+    margin-right: auto;
+   }
+   .react-calendar-container {
+    position: absolute;
+    width: 1177px;
+    height: 774px;
+    left: 320px;
+    top: 116px;
+    
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 32px;
+}
+   .react-calendar__navigation button {
+    color: Black;
+    min-width: 44px;
+    background: none;
+    font-size: 23px;
+    margin-top: 8px;
+    
+    margin-left: 0px;
+   }
+   .react-calendar__navigation button:enabled:hover,
+   .react-calendar__navigation button:enabled:focus {
+    background-color: #f8f8fa;
+
+   }
+   .react-calendar__navigation button[disabled] {
+    background-color: #f0f0f0;
+   }
+   abbr[title] {
+    text-decoration: none;
+
+   }
+   /* .react-calendar__month-view__days__day--weekend {
+    color: #d10000;
+   } */
+   .react-calendar__tile:enabled:hover,
+   .react-calendar__tile:enabled:focus {
+    background: #f8f8fa;
+    color: #E17E01;
+    width: 5px;
+    height: 35px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid #E17E01;
+   }
+   .react-calendar__tile--now {
+    background: white;
+    font-weight: bold;
+    color: #E17E01;
+    width: 5px;
+    height: 35px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid #E17E01;
+   }
+   .react-calendar__tile--now:enabled:hover,
+   .react-calendar__tile--now:enabled:focus {
+    background: white;
+    width: 5px;
+    height: 35px;
+    border-radius: 50%;
+    display: inline-block;
+    font-weight: bold;
+    color:#E17E01;
+    border: 2px solid #E17E01;
+   }
+   .react-calendar__tile--hasActive:enabled:hover,
+   .react-calendar__tile--hasActive:enabled:focus {
+    background: #f8f8fa;
+   }
+   .react-calendar__tile--active {
+    background: #E17E01;
+    width: 5px;
+    height: 35px;
+    border-radius: 50%;
+    display: inline-block;
+    font-weight: bold;
+    color: white;
+   }
+   .react-calendar__tile--active:enabled:hover,
+   .react-calendar__tile--active:enabled:focus {
+    background: #E17E01;
+    color: white;
+   }
+   .react-calendar--selectRange .react-calendar__tile--hover {
+    background-color: #f8f8fa;
+   }
+   .react-calendar__tile--range {
+    background: #f8f8fa;
+    color: #E17E01;
+    border-radius: 0;
+   }
+   .react-calendar__tile--rangeStart {
+    width: 5px;
+    height: 35px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #E17E01;
+    color: white;
+   }
+   .react-calendar__tile--rangeEnd {
+    width: 5px;
+    height: 35px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #E17E01;
+   }
+.hr {
+
+position: absolute;
+width: 1048px;
+height: 0px;
+left: 382px;
+top: 508px;
+
+border: 2px solid #E4E4E4;
+
+}
+.verticalLine {
+    position: absolute;
+    width: 407px;
+    left: 77px;
+    top: 495px;
+    border: 1px solid #b3b2b2;
+    transform: rotate(89.97deg);
+  }
+.event {
+  position: absolute;
+  width: 172px;
+  height: 42px;
+  left: 60px;
+  top: 290px;
+  
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 42px;
+  color: #28333B;
+}
+.event.ev {
+    font-size: 20px;
+    top : 70px;
+    left : -50px;
+    
+}
+.event.ev img {
+    position:relative; 
+    left : 50px;
+    display:inline;
+    margin-right: 0.11cm;
+    
+}
+.event.ev img:hover { transform: scale(1.1); }
+.rectangle {
+box-sizing: border-box;
+position: absolute;
+width: 23.64px;
+height: 20px;
+left : 7px;
+top: 11px;
+background: #D6DAFB;
+border: 1px solid #000000;
+border-radius: 4px;
+}
+.rectangle.l {
+    background: #FFE4E4;
+    top:53px;
+
+}
+.rectangle.o {
+    background: #CDF2FF;
+    top:93px;
+
+}
+.timeline {
+display: inline-block;
+background-color: white;
+
+border:none;
+font-family: "Poppins";
+line-height: 1em;
+margin-left: 200px;;
+margin-right: auto; 
+font-size: 15px;
+/* identical to box height */
+color:  #28333B;
+}
+.timeline.ev {
+box-sizing: border-box;
+position: absolute;
+width: 215px;
+height: 60px;
+left: 200px;
+top: 400px;
+text-align: center;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+background: #D6DAFB;
+border: 2px solid #8996FF;
+border-radius: 10px;
+}
+.timeline.ev:hover { 
+    transform: scale(1.1);
+}
+
+.timeline.ev.child {
+background: #CDF2FF;
+border: 2px solid #7EDEFF;
+left: 500px;
+top: 600px;
+}
+.timeline.ev.child2 {
+    background: #FFE4E4;
+    border: 2px solid #FFA6A6;
+    left: 700px;
+    
+    }
+.lol img{
+    position: absolute; 
+    bottom: 40px; 
+    right: 30px;
+}
+.lol img:hover { transform: scale(1.1); }

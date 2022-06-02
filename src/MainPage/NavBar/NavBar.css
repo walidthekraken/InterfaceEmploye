@@ -13,7 +13,7 @@
     padding: 15px;
     margin: auto;
 
-    display: flex;
+    display: flex; align-items: center;
     justify-content: center;
     background-color: #F9F9F9;
     border-radius: 15px;

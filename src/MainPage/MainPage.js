@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import GestionCartes from "../Screens/GestionCartes/GestionCartes";
+import Gestionevent from "../Screens/Gestionevent/Event";
+import Login from "../Screens/Login/Login";
 import './MainPage.css'
 import NavBar from "./NavBar/NavBar";
-
 const MainPage = () => {
 
 const [pageId, setPageId] = useState(0);
@@ -25,6 +26,10 @@ const clickHandler = (id) => {
                         <button className={(pageId===3)?"selected-button":"off-button"} onClick={()=>{clickHandler(3)}}>Gestion des événements</button>
                         <button className={(pageId===4)?"selected-button":"off-button"} onClick={()=>{clickHandler(4)}}>Gestion des circuits</button>
                         <button className={(pageId===5)?"selected-button":"off-button"} onClick={()=>{clickHandler(5)}}>Tableau de bord</button>
+                        <div className = "but">
+                        <button className={(pageId===6)?"selected-button":"off-button"} onClick={()=>{clickHandler(6)}}>Parametres</button>
+                        <button className={(pageId===7)?"selected-button":"off-button"} onClick={()=>{clickHandler(7)}}>Se deconnecter</button>
+                        </div>
                     </div>
                 </div>
                 <div id="content">
@@ -38,14 +43,15 @@ const clickHandler = (id) => {
                         (pageId===2) && <p>hhhhh</p>
                     }
                     {
-                        (pageId===3) && <p>hhhhh</p>
+                        (pageId===3) && <p><Gestionevent/></p>
                     }
                     {
                         (pageId===4) && <p>hhhhh</p>
                     }
                     {
-                        (pageId===5) && <p>hhhhh</p>
+                        (pageId===7) && <p>hhhhh</p>
                     }
+
                 </div>
             </div>
         </div>

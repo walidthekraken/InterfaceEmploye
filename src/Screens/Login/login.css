@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); 
+.App {
+  text-align: center;
+}
+
+.BackgroundImage {
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  background-image: url("../../res/Login/nature.jpeg");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+  z-index: -1;
+  
+}
+
+.Rectangle {
+  position: absolute;
+  width: 580px;
+  height: 550px;
+  background: rgba(225, 126, 1, 0.70);
+  border-radius: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.Logo {
+
+  position:absolute;
+  width: 130px;
+  height: 65px;
+  background-color: transparent;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 75px;
+  color: #FFFFFF;
+  left: 129px;
+  top:45px ;
+}
+
+.Login {
+  position:absolute;
+  font-size: 29px;
+  line-height: 4px;
+  clear: both;
+  display: inline-block;
+  white-space: nowrap;
+  font-family: 'Poppins';
+  font-style: normal;
+
+}
+.Login.Son {
+  position:absolute;
+  font-size: 29px;
+  line-height: 4px;
+  clear: both;
+  display: inline-block;
+  white-space: nowrap;
+  border-bottom: 1px #FFFFFF;
+  font-family: 'Poppins';
+  font-style: normal;
+ 
+
+}
+
+
+.form {
+  position: relative;
+  overflow: hidden;
+  bottom: 50px;
+  display: block;
+  padding: 30px;
+  text-align: justify;
+}
+
+.form input {
+  width: 100%;
+  height: 100%;
+  color: #FFFFFF;
+  padding-bottom: 10px;
+  border: none;
+  background-color: transparent;
+  overflow: hidden;
+  font-size: 20px;
+}
+.form label {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #FFFFFF;
+  font-family:"Poppins";
+}
+.form label::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 2px solid #fce38a;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+
+.content-name {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding-bottom: 20px;
+  transition: all 0.3s ease;
+}
+.form input:focus {
+  outline: none;
+}
+.form input:focus + .label-name .content-name,
+.form input:valid + .label-name .content-name {
+  transform: translateY(0%);
+  font-size: 16px;
+  left: 0px;
+  color: #fce38a;
+}
+.form input:focus + .label-name::after,
+.form input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+
+.btn{
+  color: #FFFFFF;
+	text-transform:uppms-pageercase;
+	cursor:pointer;
+  position: relative;
+  width: 320px;
+  height: 84px;
+  background: #28333B;
+  border-radius: 20px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-size:29px;
+  bottom: 8px;
+  border: none;
+}
+.btn:after{
+	content:"Lol";
+	position:absolute;
+	background:rgba(0,0,0,0.50);
+}
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+  font-size:29px;
+	
+
+	
+}

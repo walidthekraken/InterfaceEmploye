@@ -15,6 +15,10 @@
     padding-left: 30px;
 }
 
+.but{
+    padding: 300px 0px;
+    }
+
 .off-button {
     margin: 5px;
     background-color: white;
@@ -39,6 +43,9 @@
     color: #E17E01;
     cursor: pointer;
 }
+
+
+
 
 .ListBot {
     float:right;
