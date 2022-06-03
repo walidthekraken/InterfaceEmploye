@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import GestionCartes from "../Screens/GestionCartes/GestionCartes";
+import Home from "../Screens/Home/Home";
 import './MainPage.css'
 import NavBar from "./NavBar/NavBar";
 
@@ -29,7 +30,7 @@ const clickHandler = (id) => {
                 </div>
                 <div id="content">
                     {
-                        (pageId===0) && <p>hhhhh</p>
+                        (pageId===0) && <Home />
                     }
                     {
                         (pageId===1) && <GestionCartes/>
