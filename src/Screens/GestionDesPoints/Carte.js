@@ -3,6 +3,7 @@ import './Carte.css';
 import 'mapbox-gl/dist/mapbox-gl.css'; 
 import mapboxgl from 'mapbox-gl';
 import MapboxCircle from 'mapbox-gl-circle';
+import { Autocomplete, TextField } from "@mui/material";
 
 mapboxgl.accessToken = "pk.eyJ1Ijoid2FsaWR0aGVrcmFrZW4iLCJhIjoiY2wzb2tubGpxMG0yYjNtczZweTE3b215ZyJ9.nJQFsmtavurwgs46nz-urw";
 
@@ -59,7 +60,7 @@ const Carte = () => {
 
     const onClickHandlerDelete = (id) => {
         console.log('clicked')
-        if (newName!="" & newType!="" & newPerim!=0){
+        if (newName!=="" & newType!=="" & newDesc!==""){
             fetch(`http://walidthekraken.pythonanywhere.com/cartes/del?id=${id}`,{
           'methods':'POST',
           headers : {
@@ -72,6 +73,7 @@ const Carte = () => {
     }
 
     useEffect(()=>{
+        
         if (loaded) return;
         //setLoaded(true);
         cartes.map((carte, index) =>{
@@ -80,38 +82,11 @@ const Carte = () => {
                 .setHTML(`<h1>Id:${carte.CarteId} Nom:${carte.CarteNom}</h1><button ref=${buttonRef} class="btn">Supprimer</button>`)
                 .setMaxWidth("300px");
 
-            
-            const circle = new MapboxCircle({lat: carte.CarteLat, lng: carte.CarteLong}, carte.CartePerim, {
-                editable: false,
-                minRadius: 1500,
-                fillColor: '#B2A995'
-            }).addTo(map.current);
             const marker = new mapboxgl.Marker({color:"#59554B"}).
             setLngLat([carte.CarteLong,carte.CarteLat])
             .setPopup(popup)
             .addTo(map.current);
-
-            // const btn = document.getElementsByClassName("btn")[0];
-            // btn.addEventListener("click", ()=> onClickHandlerDelete(carte.CarteId));
-            
-            const markerHeight = 50;
-            const markerRadius = 10;
-            const linearOffset = 25;
-            const popupOffsets = {
-                'top': [0, 0],
-                'top-left': [0, 0],
-                'top-right': [0, 0],
-                'bottom': [0, -markerHeight],
-                'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-                'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-                'left': [markerRadius, (markerHeight - markerRadius) * -1],
-                'right': [-markerRadius, (markerHeight - markerRadius) * -1]
-            };
-
-        
-            
-        
-        
+            currentMarkers.push(marker)
         })
     },[cartes])
     
@@ -121,15 +96,63 @@ const Carte = () => {
         }
         
     },[lat,lng,currentLoc])
+
+    const [currentMap, setCurrentMap] = useState(' ')
+    const [currentMarkers, setCurrentMarkers] = useState([])
+    const [currentPoints, setCurrentPoints] = useState([])
+
+    const [currentCircle, setCurrentCircle] = useState(null)
+
+    useEffect(()=>{
+        if (currentMap==' ') return;
+        currentMarkers.forEach((marker)=>marker.remove())
+        if (currentCircle!== null) currentCircle.remove()
+        setCurrentMarkers([])
+        console.log(cartes[cartes.findIndex(x => x.CarteId === currentMap)])
+        fetch(`http://walidthekraken.pythonanywhere.com/points/print`,{
+          'methods':'GET',
+          headers : {
+             'content-type':'application/json'
+          }
+        })
+        .then(response => response.json())
+        .then((data) => {setCurrentPoints(data.filter(obj => obj.CarteId==cartes[cartes.findIndex(x => x.CarteId === currentMap)].CarteId))})
+        .catch(error => console.log(error))
+        setCurrentCircle( new MapboxCircle({lat: Number(cartes[cartes.findIndex(x => x.CarteId === currentMap)].CarteLat), lng: Number(cartes[cartes.findIndex(x => x.CarteId === currentMap)].CarteLong)}, cartes[cartes.findIndex(x => x.CarteId === currentMap)].CartePerim, {
+            editable: false,
+            minRadius: 1500,
+            fillColor: '#B2A995'
+        }).addTo(map.current));
+    },[currentMap])
+
+    useEffect(()=>{
+        if (currentMap==' ') return;
+        map.current.setCenter([cartes[cartes.findIndex(x => x.CarteId === currentMap)].CarteLong , cartes[cartes.findIndex(x => x.CarteId === currentMap)].CarteLat])
+        map.current.setZoom(8)
+        currentPoints.map((point, index) =>{
+            console.log(point)
+            const popup = new mapboxgl.Popup({className: 'my-class'})
+                .setHTML(`<h1>Id:${point.PointId} Nom:${point.PointNom}</h1><button ref=${buttonRef} class="btn">Supprimer</button>`)
+                .setMaxWidth("300px");
+
+            const marker = new mapboxgl.Marker({color:"#59554B"}).
+            setLngLat([point.PointLong,point.PointLat])
+            .setPopup(popup)
+            .addTo(map.current);
+            currentMarkers.push(marker)
+        })
+    },[currentPoints])
     
 
     const [newName, setNewName] = useState("")
     const [newType, setNewType] = useState("")
-    const [newPerim, setNewPerim] = useState(0)
+    const [newDesc, setNewDesc] = useState(0)
+
+
 
     const onClickHandler = () => {
-        if (newName!=="" & newType!=="" & newPerim!==0){
-            fetch(`http://walidthekraken.pythonanywhere.com/cartes/add?nom=${newName}&lat=${lat}&long=${lng}&desc=hi&perim=${newPerim}`,{
+        if (newName!=="" & newType!=="" & newDesc!==""){
+            fetch(`http://walidthekraken.pythonanywhere.com/points/add?nom=${newName}&lat=${lat}&long=${lng}&desc=${newDesc}&carteId=${cartes[cartes.findIndex(x => x.CarteId === currentMap)].CarteId}`,{
           'methods':'POST',
           headers : {
              'content-type':'application/json'
@@ -138,20 +161,16 @@ const Carte = () => {
         .then(response => {
             console.log(response);
             const popup = new mapboxgl.Popup({className: 'my-class'})
-                .setHTML(`<h1>Id:${newPerim} Nom:${newName}</h1><button ref=${buttonRef} class="btn">Supprimer</button>`)
+                .setHTML("<h1>Hello World!</h1>")
                 .setMaxWidth("300px");
             console.log(lat)
             console.log(lng)
-            const circle = new MapboxCircle({lat: Number(lat), lng: Number(lng)}, newPerim, {
-                editable: false,
-                minRadius: 1500,
-                fillColor: '#B2A995'
-            }).addTo(map.current);
             
             const marker = new mapboxgl.Marker({color:"#555555"})
             .setLngLat([lng,lat])
             .setPopup(popup)
             .addTo(map.current);
+            currentMarkers.push(marker)
         })
         .catch(error => console.log(error))
         }
@@ -160,26 +179,57 @@ const Carte = () => {
     return (
         <div>
             <div className="header">
-                Ajouter une carte numérique
+                Ajouter le point d'interet
 
                 <div className="InputList">
+
                     
+                    
+                        <Autocomplete
+                            
+                            id="cardAuto"
+                            disableClearable
+                            onChange={(event, value)=>{
+                                setCurrentMap(value.id)
+                            }}
+                            options={cartes.map(
+                                (carte)=>
+                                {return {label: carte.CarteNom, id: carte.CarteId};}
+                            )}
+                            defaultValue={currentMap}
+                            renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                label="Nom de la carte"
+                                variant="standard"
+                                id="cardText"
+                                fullWidth
+                                InputProps={{
+                                
+                                ...params.InputProps,
+                                disableUnderline : true,
+                                shrink : true,
+                                
+                                }}
+                            />
+                            )}
+                        />
                         <div className="InputBar">
-                            <input type="text" onChange={(event)=>{setNewName(event.target.value);}} placeholder="Nom de la carte">
+                            <input type="text" onChange={(event)=>{setNewName(event.target.value);}} placeholder="Nom du point">
                             </input>
                         </div>
                         <div className="InputBar">
-                            <input type="text" onChange={(event)=>setNewType(event.target.value)} placeholder="Type de la carte">
+                            <input type="text" onChange={(event)=>setNewType(event.target.value)} placeholder="Type du point">
                             </input>
                         </div>
                         <div className="InputBar">
-                            <input type="number" onChange={(event)=>setNewPerim(event.target.value)} placeholder="Périmètre de la carte">
+                            <input type="text" onChange={(event)=>setNewDesc(event.target.value)} placeholder="Description du point">
                             </input>
                 
                     </div>
                     
                         <button className="InputButton" onClick={onClickHandler}>
-                            Ajouter la carte
+                            Ajouter le point
                         </button>
                    
                 </div>

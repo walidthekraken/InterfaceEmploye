@@ -5,7 +5,7 @@
     
 }
 
-.GestionCartesScreen {
+.GestionPointsScreen {
     
     padding: 5px;
     background-color: white;
@@ -51,7 +51,7 @@
     border-radius: 10px;
     color: black;
 
-    width: 206px;
+    width: 180px;
     max-height: 66px;
 
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
@@ -62,7 +62,8 @@
     font-weight: 400;
 
     padding: 10px;
-    margin: auto;
+    float: right;
+    margin-left:20px;
     display: flex;
     justify-content: center;
     
@@ -97,3 +98,28 @@
     font-weight: 400;
 }
   
+#cardAuto {
+    width: 150px;
+    height: 20px;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    color: black;
+
+    padding: 10px;
+
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+#cardText {
+    
+    font-size: 22px;
+
+    
+    
+    display: flex;
+    justify-content: center;
+    
+    
+    
+}
+
