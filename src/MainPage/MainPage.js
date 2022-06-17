@@ -3,7 +3,7 @@ import GestionCartes from "../Screens/GestionCartes/GestionCartes";
 import GestionPoints from "../Screens/GestionDesPoints/GestionPoints";
 import './MainPage.css'
 import NavBar from "./NavBar/NavBar";
-
+import Profile from "../Screens/GestionCartes/Profile";
 const MainPage = () => {
 
 const [pageId, setPageId] = useState(0);
@@ -49,7 +49,7 @@ const clickHandler = (id) => {
                         (pageId===4) && <p>hhhhh</p>
                     }
                     {
-                        (pageId===5) && <p>hhhhh</p>
+                        (pageId===5) && <Profile/>
                     }
                 </div>
             </div>
