@@ -4,6 +4,7 @@ import GestionPoints from "../Screens/GestionDesPoints/GestionPoints";
 import './MainPage.css'
 import NavBar from "./NavBar/NavBar";
 import Profile from "../Screens/GestionCartes/Profile";
+import Home from "../Screens/Home/Home";
 const MainPage = () => {
 
 const [pageId, setPageId] = useState(0);
@@ -31,7 +32,7 @@ const clickHandler = (id) => {
                 </div>
                 <div id="content">
                     {
-                        (pageId===0) && <p>hhhhh</p>
+                        (pageId===0) && <p><Home clickHandler={clickHandler} /></p>
                     }
                     {
                         (pageId===1) && <GestionCartes/>
