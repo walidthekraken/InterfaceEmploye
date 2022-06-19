@@ -1,0 +1,139 @@
+.Screen {
+    
+    padding: 5px;
+    background-color: white;
+    border-radius: 15px;
+    /*display: flex;*/
+    justify-content: center;
+    
+
+}
+.Container{
+    display: table-cell;
+    display: flex;
+	vertical-align: top;
+    flex-direction: column;
+    padding: 40px;
+    font-size: 17px;
+    font-weight: 400;
+ 
+    border-radius: 10px;
+    border: 0;
+   
+    max-height: 66px;
+    align-items: center;
+}
+   
+.Info {
+    padding: 10px;
+    display: table-cell;
+	vertical-align: top;
+}
+.ProfileScreen{
+    display: table;
+}
+.Name{
+    padding-top: 30px;
+    font-size: 19px;
+    font-weight: 400;
+    display: inline-flex;
+}
+
+.row{
+    padding-right: 10px;
+}
+.InputButton {
+    
+    font-size: 17px;
+    margin-top: 10px;
+    font-weight: 400;
+    padding: 10px;
+    background-color: #E17E01;
+    border-radius: 10px;
+    color: white;
+    border: 0;
+    width: 206px;
+    max-height: 66px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+
+.row{
+    padding-block-start: 15px;
+    
+}
+.InputButtonWhite {
+    
+    margin-right: 8px;
+    font-size: 17px;
+    font-weight: 400;
+    padding: 10px;
+   
+    display:inline-flexbox; 
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    border-color: #E17E01;
+    color: #E17E01;
+    border: 0;
+    width: auto;
+    max-height: 50px;
+
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+.Informations{
+    color: #E17E01;
+    padding-top: 15px;
+    font-weight: 400;
+    font-size: 20px;
+    display: inline-flex;
+}
+
+
+.ProfilePic {
+    float : left;
+    
+}
+
+ img {
+    width: 120px;
+    
+}
+
+.Output{
+    color:#E17E01 ;
+    display: inline;
+}
+/* Vector */
+.draw{
+position: absolute;
+left: 13.55%;
+right: 13.53%;
+top: 5.94%;
+bottom: 18.67%;
+
+background: #E17E01;
+
+
+/* Vector */
+
+position: absolute;
+left: 46.47%;
+right: 24.57%;
+top: 17.92%;
+bottom: 54.37%;
+
+background: #E17E01;
+
+
+/* Vector */
+
+position: absolute;
+left: 9.38%;
+right: 9.38%;
+top: 88.54%;
+bottom: 5.21%;
+
+background: #E17E01;
+}

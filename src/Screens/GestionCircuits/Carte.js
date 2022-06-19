@@ -76,18 +76,18 @@ const Carte = () => {
         
         if (loaded) return;
         //setLoaded(true);
-        cartes.map((carte, index) =>{
-            console.log(carte)
-            const popup = new mapboxgl.Popup({className: 'my-class'})
-                .setHTML(`<h1>Id:${carte.CarteId} Nom:${carte.CarteNom}</h1><button ref=${buttonRef} class="btn">Supprimer</button>`)
-                .setMaxWidth("300px");
+        // cartes.map((carte, index) =>{
+        //     console.log(carte)
+        //     const popup = new mapboxgl.Popup({className: 'my-class'})
+        //         .setHTML(`<h1>Id:${carte.CarteId} Nom:${carte.CarteNom}</h1><button ref=${buttonRef} class="btn">Supprimer</button>`)
+        //         .setMaxWidth("300px");
 
-            const marker = new mapboxgl.Marker({color:"#59554B"}).
-            setLngLat([carte.CarteLong,carte.CarteLat])
-            .setPopup(popup)
-            .addTo(map.current);
-            currentMarkers.push(marker)
-        })
+        //     const marker = new mapboxgl.Marker({color:"#59554B"}).
+        //     setLngLat([carte.CarteLong,carte.CarteLat])
+        //     .setPopup(popup)
+        //     .addTo(map.current);
+        //     currentMarkers.push(marker)
+        // })
     },[cartes])
     
     useEffect(()=>{
@@ -102,8 +102,15 @@ const Carte = () => {
     const [currentPoints, setCurrentPoints] = useState([])
 
     const [currentCircle, setCurrentCircle] = useState(null)
+    const [currentCircuitCords , setCurrentCircuitCords] = useState([])
 
     useEffect(()=>{
+        try{
+            map.current.removeLayer('route')
+            map.current.removeSource('route')
+            }catch(e){
+                console.log(e)
+            }
         if (currentMap==' ') return;
         currentMarkers.forEach((marker)=>marker.remove())
         if (currentCircle!== null) currentCircle.remove()
@@ -141,6 +148,7 @@ const Carte = () => {
             .addTo(map.current);
             currentMarkers.push(marker)
         })
+        
     },[currentPoints])
     
 
@@ -176,10 +184,68 @@ const Carte = () => {
         }
     }
 
+    const [autocompleteValues, setAutocompleteValues] = useState([]);
+    const handleChangeMulti = (event, value) => {
+
+        setAutocompleteValues(value);
+        console.log(value)
+      };
+
+    useEffect(() => {
+        setCurrentCircuitCords(
+            autocompleteValues.map((point)=> {
+                    
+                    return [currentPoints.find(o=> o.PointId == point.id).PointLong, currentPoints.find(o=> o.PointId == point.id).PointLat]
+                }
+            )
+        )
+    },[autocompleteValues])
+
+    useEffect(() => {
+        if (map.current == null) return;
+        
+        try{
+        map.current.removeLayer('route')
+        map.current.removeSource('route')
+        }catch(e){
+            console.log(e)
+        }
+        try{
+        console.log(currentCircuitCords)
+        map.current.addSource('route', {
+            'type': 'geojson',
+            'data': {
+            'type': 'Feature',
+            'properties': {},
+            'geometry': {
+            'type': 'LineString',
+            'coordinates': currentCircuitCords
+            }
+            }
+            });
+            map.current.addLayer({
+            'id': 'route',
+            'type': 'line',
+            'source': 'route',
+            'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+            },
+            'paint': {
+            'line-color': '#888',
+            'line-width': 8
+            }
+            });
+        }catch(e){
+            console.log(e)
+        }
+       
+    },[currentCircuitCords])
+
     return (
         <div>
             <div className="header">
-                Ajouter le point d'interet
+                Ajouter un circuit
 
                 <div className="InputList">
 
@@ -214,22 +280,48 @@ const Carte = () => {
                             />
                             )}
                         />
-                        <div className="InputBar">
-                            <input type="text" onChange={(event)=>{setNewName(event.target.value);}} placeholder="Nom du point">
-                            </input>
+                        <div className="hii">
+                        <Autocomplete
+                            multiple
+                            id="cardAuto2"
+                            disableClearable
+                            //onChange={//(event, value)=>{
+                                //setCurrentMap(value.id)
+                        //    }
+                      //  }
+                            onChange={handleChangeMulti}
+                            options={currentPoints.map(
+                                (point)=>
+                                {return {label: point.PointNom, id: point.PointId};}
+                            )}
+                            
+                            renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                label="Selectionner des points"
+                                variant="standard"
+                                id="cardText"
+                                
+                                // defaultValue={" "}
+                                InputProps={{
+                                
+                                ...params.InputProps,
+                                disableUnderline : true,
+                                shrink : true,
+                                
+                                }}
+                            />
+                            )}
+                        />
                         </div>
-                        <div className="InputBar">
-                            <input type="text" onChange={(event)=>setNewType(event.target.value)} placeholder="Type du point">
-                            </input>
-                        </div>
-                        <div className="InputBar">
-                            <input type="text" onChange={(event)=>setNewDesc(event.target.value)} placeholder="Description du point">
+                        {/* <div className="InputBar">
+                            <input id='heyy' type="text" onChange={(event)=>setNewDesc(event.target.value)} placeholder="Description du circuit">
                             </input>
                 
-                    </div>
+                    </div> */}
                     
                         <button className="InputButton" onClick={onClickHandler}>
-                            Ajouter le point
+                            Ajouter le circuit
                         </button>
                    
                 </div>

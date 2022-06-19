@@ -1,6 +1,10 @@
 import React, {useState} from "react";
 import GestionCartes from "../Screens/GestionCartes/GestionCartes";
+import GestionCircuits from "../Screens/GestionCircuits/GestionCircuits";
 import GestionPoints from "../Screens/GestionDesPoints/GestionPoints";
+import Gestionevent from "../Screens/Gestionevent/Event";
+import Home from "../Screens/Home/Home";
+import Profile from "../Screens/Profile/Profile";
 import './MainPage.css'
 import NavBar from "./NavBar/NavBar";
 
@@ -16,7 +20,7 @@ const clickHandler = (id) => {
 
     return(
         <div className="Main">
-            <NavBar/>
+            <NavBar fct ={()=>clickHandler(19)}/>
             <div id="outer-container">
                 <div id="sidebar">
                     <div className="List">
@@ -31,7 +35,7 @@ const clickHandler = (id) => {
                 </div>
                 <div id="content">
                     {
-                        (pageId===0) && <p>hhhhh</p>
+                        (pageId===0) &&<Home></Home>
                     }
                     {
                         (pageId===1) && <GestionCartes/>
@@ -43,13 +47,16 @@ const clickHandler = (id) => {
                         (pageId===2) && <p>hhhhh</p>
                     }
                     {
-                        (pageId===3) && <p>hhhhh</p>
+                        (pageId===3) && <Gestionevent/>
                     }
                     {
-                        (pageId===4) && <p>hhhhh</p>
+                        (pageId===4) && <GestionCircuits/>
                     }
                     {
                         (pageId===5) && <p>hhhhh</p>
+                    }
+                    {
+                        (pageId===19) && <Profile/>
                     }
                 </div>
             </div>

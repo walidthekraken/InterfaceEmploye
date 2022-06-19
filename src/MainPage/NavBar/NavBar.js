@@ -1,6 +1,6 @@
 import React from "react";
 import './NavBar.css';
-const NavBar = () => {
+const NavBar = ({fct}) => {
     return (
         <div className="NavBar">
 
@@ -16,9 +16,9 @@ const NavBar = () => {
             </div>
 
             <div>
+                {/* <img src={require('../../res/NavBar/notification.png')}/> */}
                 <img src={require('../../res/NavBar/notification.png')}/>
-                <img src={require('../../res/NavBar/notification.png')}/>
-                <img src={require('../../res/NavBar/notification.png')}/>
+                <img onClick={fct} src={require('../../res/NavBar/profile.png')}/>
             </div>
             
 
