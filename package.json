@@ -15,9 +15,12 @@
     "mapbox-gl": "^2.8.2",
     "mapbox-gl-circle": "^1.6.5",
     "react": "^18.1.0",
+    "react-calendar": "^4.3.0",
     "react-datepicker": "^4.8.0",
     "react-dom": "^18.1.0",
     "react-map-gl": "^7.0.15",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
